@@ -12,6 +12,8 @@
     "deploy:ui": "cd ../notefrontend && npm run build:ui && cd ../notebackend && git add dist && git commit -m uibuild && git push"
   },
   "dependencies": {
-    "express": "^5.2.1"
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "mongoose": "^9.3.3"
   }
 }
