@@ -9,10 +9,9 @@
     "start": "node index.js",
     "dev": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy:ui": "cd ../notefrontend && npm run build:ui && cd ../notebackend && git add dist && git commit -m uibuild & git push"
+    "deploy:ui": "cd ../notefrontend && npm run build:ui && cd ../notebackend && git add dist && git commit -m uibuild && git push"
   },
   "dependencies": {
-    "cors": "^2.8.6",
     "express": "^5.2.1"
   }
 }
