@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
-const url = process.env.MONGODB_URI;
-mongoose.set('strictQuery', false);
+const url = process.env.MONGODB_URI
+mongoose.set('strictQuery', false)
 
-console.log('connecting to', url);
+console.log('connecting to', url)
 mongoose
   .connect(url, { family: 4 })
   .then(() => console.log('connected to MongoDB'))
-  .catch((err) => console.log('error connecting to MongoDB:', err.message));
+  .catch((err) => console.log('error connecting to MongoDB:', err.message))
 
 const noteSchema = new mongoose.Schema({
   content: {
@@ -16,15 +16,15 @@ const noteSchema = new mongoose.Schema({
     required: true,
   },
   important: Boolean,
-});
+})
 
 // replace _id -> id as a string
 noteSchema.set('toJSON', {
   transform: (document, returnedObject) => {
-    returnedObject.id = returnedObject._id.toString();
-    delete returnedObject._id;
-    delete returnedObject.__v;
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
   },
-});
+})
 
-module.exports = mongoose.model('Note', noteSchema);
+module.exports = mongoose.model('Note', noteSchema)
