@@ -82,7 +82,7 @@ app.delete('/api/notes/:id', (req, res, next) => {
     .catch((err) => next(err));
 });
 
-app.post('/api/notes', (req, res) => {
+app.post('/api/notes', (req, res, next) => {
   const body = req.body;
 
   if (!body.content) {
@@ -96,7 +96,7 @@ app.post('/api/notes', (req, res) => {
     important: body.important || false,
   });
 
-  note.then((savedNote) => res.json(savedNote));
+  note.then((savedNote) => res.json(savedNote)).catch((err) => next(err));
 });
 
 const unknownEndpoint = (req, res) => {
@@ -109,6 +109,8 @@ const errorHandler = (err, req, res, next) => {
 
   if (err.name === 'CastError') {
     return res.status(400).send({ error: 'malformatted id' });
+  } else if (err.name === 'ValidationError') {
+    return res.status(400).json({ error: err.message });
   }
 
   next(err);

@@ -1,6 +1,6 @@
 {
   "name": "notebackend",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "license": "ISC",
   "author": "a-terho",
@@ -9,7 +9,9 @@
     "start": "node index.js",
     "dev": "node --watch index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy:ui": "cd ../notefrontend && npm run build:ui && cd ../notebackend && git add dist && git commit -m uibuild && git push"
+    "build:ui": "cd ../notefrontend && npm run build:ui",
+    "deploy": "npm run build:ui && git add . && git commit -m autobuild && git push",
+    "deploy:ui": "npm run build:ui && git add dist && git commit -m uibuild && git push"
   },
   "dependencies": {
     "dotenv": "^17.3.1",
