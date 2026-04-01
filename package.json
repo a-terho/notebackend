@@ -10,7 +10,7 @@
     "dev": "node --watch index.js",
     "test": "node --test",
     "lint": "eslint .",
-    "build:ui": "cd ../notefrontend && npm run build:ui",
+    "build:ui": "rm -rf dist && cd ../notefrontend && npm run build:ui",
     "deploy": "npm run build:ui && git add . && git commit -m autobuild && git push",
     "deploy:ui": "npm run build:ui && git add dist && git commit -m uibuild && git push"
   },
