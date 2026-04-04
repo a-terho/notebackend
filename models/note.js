@@ -7,11 +7,15 @@ const noteSchema = new mongoose.Schema({
     required: true,
   },
   important: Boolean,
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
 })
 
-// replace _id -> id as a string
 noteSchema.set('toJSON', {
   transform: (document, returnedObject) => {
+    // replace _id -> id as a string
     returnedObject.id = returnedObject._id.toString()
     delete returnedObject._id
     delete returnedObject.__v
