@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "build:ui": "rm -rf dist && cd ../notefrontend && npm run build:ui",
     "deploy": "npm run build:ui && git add . && git commit -m autobuild && git push",
-    "deploy:ui": "npm run build:ui && git add dist && git commit -m uibuild && git push"
+    "deploy:ui": "npm run build:ui && git add dist && git commit -m uibuild && git push",
+    "rebuild-dev": "npm run build:ui && npm run dev"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
